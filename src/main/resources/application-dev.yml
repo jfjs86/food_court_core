@@ -1,0 +1,6 @@
+server:
+  port: 8091
+
+loggin:
+  level:
+    root: DEBUG

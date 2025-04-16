@@ -32,6 +32,10 @@ public class UserUseCase implements IUserServicePort{
         if (!errors.isEmpty()) {
             throw new InvalidUserException("Invalid user data: " + String.join(", ", errors));
         }
+        int profile = 2;
+        Set<Integer> profiles = new HashSet<>();
+        profiles.add(profile);
+        user.setUserProfiles(profiles);
         return this.userPersistencePort.createOwnerUser(user);
     }
 

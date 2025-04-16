@@ -13,4 +13,6 @@ public interface IUserRequestMapper {
 
     User toUserModel(UserRequestDto userRequestDto);
 
+    UserRequestDto toUserRequestDto(User user);
+
 }

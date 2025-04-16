@@ -16,21 +16,29 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> handleIllegalArgumentExceptionn(IllegalArgumentException e, HttpStatus httpStatus) {
+    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException e) {
         e.printStackTrace();
-        return handleInternalError(e, HttpStatus.NOT_FOUND);
+        return handleInternalError(e, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(FeignException.class)
-    public ResponseEntity<?> handleFeignException(FeignException e){
+    public ResponseEntity<?> handleFeignException(FeignException e) {
         e.printStackTrace();
-        return handleInternalError(e,HttpStatus.CONFLICT);
+        HttpStatus status;
+        if (e.status() >= 500) {
+            status = HttpStatus.BAD_GATEWAY;
+        } else if (e.status() >= 400) {
+            status = HttpStatus.BAD_REQUEST;
+        } else {
+            status = HttpStatus.CONFLICT;
+        }
+        return handleInternalError(e, status);
     }
 
     @ExceptionHandler(FeignException.FeignClientException.class)
-    public ResponseEntity<?> handleFeignClientException(FeignException.FeignClientException e){
+    public ResponseEntity<?> handleFeignClientException(FeignException.FeignClientException e) {
         e.printStackTrace();
-        return handleInternalError(e,HttpStatus.CONFLICT);
+        return handleInternalError(e, HttpStatus.valueOf(e.status()));
     }
 
     private ResponseEntity<WrapperResponse<?>> handleInternalError(Exception e, HttpStatus httpStatus) {

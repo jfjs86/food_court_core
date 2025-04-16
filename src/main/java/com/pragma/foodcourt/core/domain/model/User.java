@@ -2,6 +2,7 @@ package com.pragma.foodcourt.core.domain.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
@@ -15,7 +16,7 @@ public class User {
     private LocalDate userBirthdate;
     private String userEmail;
     private String userPassword;
-    private List<Integer> userProfiles;
+    private Set<Integer> userProfiles;
 
     public int getUserIdentityType() {
         return userIdentityType;
@@ -97,11 +98,11 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public List<Integer> getUserProfiles() {
+    public Set<Integer> getUserProfiles() {
         return userProfiles;
     }
 
-    public void setUserProfiles(List<Integer> userProfiles) {
+    public void setUserProfiles(Set<Integer> userProfiles) {
         this.userProfiles = userProfiles;
     }
 }

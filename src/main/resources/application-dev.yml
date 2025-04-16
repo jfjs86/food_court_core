@@ -9,3 +9,16 @@ external:
   api:
     user:
       base-url: http://localhost:8090
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+  info:
+    title: FoodCourt Security API
+    version: v1
+    description: API para la gestión de seguridad del FoodCourt.
+  servers:
+    - url: http://localhost:8091
+      description: Servidor local

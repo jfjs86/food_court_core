@@ -6,9 +6,6 @@ import com.pragma.foodcourt.core.domain.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 @Mapper
 public interface IUserResponseMapper {
     IUserResponseMapper INSTANCE = Mappers.getMapper(IUserResponseMapper.class);

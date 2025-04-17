@@ -37,8 +37,8 @@ public class UserRestController {
                     @ApiResponse(responseCode = "400", description = "Invalid request"),
                     @ApiResponse(responseCode = "409", description = "Conflict with external resources")
             })
-    public ResponseEntity<?> createOwnerUser(@RequestBody UserRequestDto userRequest){
-        return new WrapperResponse<>(true,"",userHandler.createOwnerUser(userRequest)).createSuccessResponse();
+    public ResponseEntity<WrapperResponse<UserResponseDto>> createOwnerUser(@RequestBody UserRequestDto userRequest){
+        return new WrapperResponse<UserResponseDto>(true,"",userHandler.createOwnerUser(userRequest)).createSuccessResponse();
     }
 
 }

@@ -1,29 +1,31 @@
 package com.pragma.foodcourt.core.infrastructure.input.rest;
 
 import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleGlobalException(Exception e) {
-        e.printStackTrace();
+    public ResponseEntity<WrapperResponse<Object>> handleGlobalException(Exception e) {
+        log.error("Unexpected error: "+e);
         return handleInternalError(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException e) {
-        e.printStackTrace();
+    public ResponseEntity<WrapperResponse<Object>> handleIllegalArgumentException(IllegalArgumentException e) {
+        log.error("IllegalArgumentException: "+e);
         return handleInternalError(e, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(FeignException.class)
-    public ResponseEntity<?> handleFeignException(FeignException e) {
-        e.printStackTrace();
+    public ResponseEntity<WrapperResponse<Object>> handleFeignException(FeignException e) {
+        log.error("FeignException: "+e);
         HttpStatus status;
         if (e.status() >= 500) {
             status = HttpStatus.BAD_GATEWAY;
@@ -36,14 +38,13 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(FeignException.FeignClientException.class)
-    public ResponseEntity<?> handleFeignClientException(FeignException.FeignClientException e) {
-        e.printStackTrace();
+    public ResponseEntity<WrapperResponse<Object>> handleFeignClientException(FeignException.FeignClientException e) {
+        log.error("FeignClientException: "+e);
         return handleInternalError(e, HttpStatus.valueOf(e.status()));
     }
 
-    private ResponseEntity<WrapperResponse<?>> handleInternalError(Exception e, HttpStatus httpStatus) {
-        WrapperResponse<?> response = new WrapperResponse<>(false, e.getLocalizedMessage(), null);
+    private ResponseEntity<WrapperResponse<Object>> handleInternalError(Exception e, HttpStatus httpStatus) {
+        WrapperResponse<Object> response = new WrapperResponse<>(false, e.getLocalizedMessage(), null);
         return new ResponseEntity<>(response, httpStatus);
     }
-
 }

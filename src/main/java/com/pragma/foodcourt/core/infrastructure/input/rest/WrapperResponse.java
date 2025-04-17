@@ -44,11 +44,12 @@ public class WrapperResponse<T> {
         return new ResponseEntity<>(this, status);
     }
 
-    public <T> ResponseEntity<WrapperResponse<?>> createSuccessResponse() {
+    public ResponseEntity<WrapperResponse<T>> createSuccessResponse() {
         return new ResponseEntity<>(new WrapperResponse<>(true, "", body), HttpStatus.OK);
     }
 
-    public <T> ResponseEntity<WrapperResponse<?>> createFailedResponse(HttpStatusCode status) {
+    public ResponseEntity<WrapperResponse<T>> createFailedResponse(HttpStatusCode status) {
         return new ResponseEntity<>(new WrapperResponse<>(false, "", body), status);
     }
+
 }

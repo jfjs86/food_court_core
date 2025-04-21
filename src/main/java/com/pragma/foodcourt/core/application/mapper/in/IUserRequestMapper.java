@@ -1,7 +1,7 @@
-package com.pragma.foodcourt.core.application.mapper;
+package com.pragma.foodcourt.core.application.mapper.in;
 
 
-import com.pragma.foodcourt.core.application.dto.UserRequestDto;
+import com.pragma.foodcourt.core.application.dto.in.UserRequestDto;
 import com.pragma.foodcourt.core.domain.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

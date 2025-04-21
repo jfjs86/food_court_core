@@ -1,10 +1,11 @@
-package com.pragma.foodcourt.core.application.handler;
+package com.pragma.foodcourt.core.application.handler.impl;
 
 
-import com.pragma.foodcourt.core.application.dto.UserRequestDto;
-import com.pragma.foodcourt.core.application.dto.UserResponseDto;
-import com.pragma.foodcourt.core.application.mapper.IUserRequestMapper;
-import com.pragma.foodcourt.core.application.mapper.IUserResponseMapper;
+import com.pragma.foodcourt.core.application.dto.in.UserRequestDto;
+import com.pragma.foodcourt.core.application.dto.out.UserResponseDto;
+import com.pragma.foodcourt.core.application.handler.IUserHandler;
+import com.pragma.foodcourt.core.application.mapper.in.IUserRequestMapper;
+import com.pragma.foodcourt.core.application.mapper.out.IUserResponseMapper;
 import com.pragma.foodcourt.core.domain.api.IUserServicePort;
 import com.pragma.foodcourt.core.domain.model.User;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserHandlerImpl implements IUserHandler{
+public class UserHandlerImpl implements IUserHandler {
 
     private final IUserServicePort userServicePort;
 

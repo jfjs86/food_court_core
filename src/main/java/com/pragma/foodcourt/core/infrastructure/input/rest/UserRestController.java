@@ -1,8 +1,8 @@
 package com.pragma.foodcourt.core.infrastructure.input.rest;
 
 
-import com.pragma.foodcourt.core.application.dto.UserRequestDto;
-import com.pragma.foodcourt.core.application.dto.UserResponseDto;
+import com.pragma.foodcourt.core.application.dto.in.UserRequestDto;
+import com.pragma.foodcourt.core.application.dto.out.UserResponseDto;
 import com.pragma.foodcourt.core.application.handler.IUserHandler;
 import com.pragma.foodcourt.core.infrastructure.input.rest.resource.UserResource;
 import io.swagger.v3.oas.annotations.Operation;

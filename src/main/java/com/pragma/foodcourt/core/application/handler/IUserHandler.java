@@ -1,7 +1,7 @@
 package com.pragma.foodcourt.core.application.handler;
 
-import com.pragma.foodcourt.core.application.dto.UserRequestDto;
-import com.pragma.foodcourt.core.application.dto.UserResponseDto;
+import com.pragma.foodcourt.core.application.dto.in.UserRequestDto;
+import com.pragma.foodcourt.core.application.dto.out.UserResponseDto;
 
 public interface IUserHandler {
 

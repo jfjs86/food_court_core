@@ -10,6 +10,27 @@ external:
     user:
       base-url: http://localhost:8090
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/food_court_core
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: HikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

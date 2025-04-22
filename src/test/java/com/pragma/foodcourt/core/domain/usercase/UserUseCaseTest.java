@@ -28,6 +28,8 @@ class UserUseCaseTest {
     private static final String INVALID_EMAIL_MESSAGE = "Invalid user data: Invalid email format";
     private static final String INVALID_AGE_MESSAGE = "Invalid user data: User must be at least 18 years old";
     private static final String INVALID_PHONE_MESSAGE = "Invalid user data: Invalid phone number format or length (max 13 digits with optional '+')";
+    private static final String INVALID_USER_ID_TYPE = "User identity type invalid";
+    private static final String INVALID_USER_ID_NUMBER = "User identity number cannot be null";
 
     @BeforeEach
     void setUp() {
@@ -97,5 +99,53 @@ class UserUseCaseTest {
         user.setUserPhone("+573102334312222");
         InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.createOwnerUser(user));
         assertEquals(INVALID_PHONE_MESSAGE, exception.getMessage());
+    }
+
+    @Test
+    void getUserByIdentity_invalid_identity_type_negative() {
+        int invalidType = -1;
+        String validNumber = "12345678";
+
+        InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.getUserByIdentity(invalidType, validNumber));
+        assertEquals(INVALID_USER_ID_TYPE, exception.getMessage());
+    }
+
+    @Test
+    void getUserByIdentity_invalid_identity_type_zero() {
+        int invalidType = 0;
+        String validNumber = "12345678";
+
+        // Act & Assert
+        InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.getUserByIdentity(invalidType, validNumber));
+
+        assertEquals(INVALID_USER_ID_TYPE, exception.getMessage());
+    }
+
+    @Test
+    void getUserByIdentity_invalid_identity_number_null() {
+        int validType = 1;
+        String invalidNumber = null;
+        InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.getUserByIdentity(validType, invalidNumber));
+        assertEquals(INVALID_USER_ID_NUMBER, exception.getMessage());
+    }
+
+    @Test
+    void getUserByIdentity_invalid_identity_number_null_empty() {
+
+        int validType = 1;
+        String invalidNumber = "";
+
+        InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.getUserByIdentity(validType, invalidNumber));
+        assertEquals(INVALID_USER_ID_NUMBER, exception.getMessage());
+    }
+
+    @Test
+    void getUserByIdentity_invalid_identity_number_null_is_blank() {
+
+        int validType = 1;
+        String invalidNumber = "   ";
+
+        InvalidUserException exception = assertThrows(InvalidUserException.class, () -> userUseCase.getUserByIdentity(validType, invalidNumber));
+        assertEquals(INVALID_USER_ID_NUMBER, exception.getMessage());
     }
 }

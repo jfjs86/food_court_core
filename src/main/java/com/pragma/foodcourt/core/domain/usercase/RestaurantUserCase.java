@@ -1,11 +1,9 @@
 package com.pragma.foodcourt.core.domain.usercase;
 
 import com.pragma.foodcourt.core.domain.api.IRestaurantServicePort;
-import com.pragma.foodcourt.core.domain.enums.ProfileEnum;
 import com.pragma.foodcourt.core.domain.exception.ErrorMessages;
 import com.pragma.foodcourt.core.domain.exception.InvalidRestaurantException;
 import com.pragma.foodcourt.core.domain.model.Restaurant;
-import com.pragma.foodcourt.core.domain.model.User;
 import com.pragma.foodcourt.core.domain.spi.IRestaurantPersistencePort;
 import com.pragma.foodcourt.core.domain.util.DomainUtils;
 
@@ -42,10 +40,7 @@ public class RestaurantUserCase implements IRestaurantServicePort {
             return errors;
         }
 
-        if(!isUserAdministrator(restaurant.getRestaurantUser())){
-            errors.add(ErrorMessages.INVALID_USER_ADMINISTRATOR);
-            return errors;
-        }
+
 
         if(!DomainUtils.isNumber(restaurant.getRestaurantIdentity())){
             errors.add(ErrorMessages.INVALID_RESTAURANT_IDENTITY);
@@ -60,17 +55,6 @@ public class RestaurantUserCase implements IRestaurantServicePort {
         }
 
         return errors;
-    }
-
-    boolean isUserAdministrator(User user) {
-        if (user != null && user.getUserProfiles() != null) {
-            for (Integer profileId : user.getUserProfiles()) {
-                if (profileId.compareTo(ProfileEnum.ADMINISTRADOR.getId())==0) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
 

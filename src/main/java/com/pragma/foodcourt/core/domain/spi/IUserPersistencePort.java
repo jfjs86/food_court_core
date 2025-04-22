@@ -6,4 +6,6 @@ public interface IUserPersistencePort {
 
     User createOwnerUser(User user);
 
+    User getUserByIdentity(int identityType, String identityNumber);
+
 }

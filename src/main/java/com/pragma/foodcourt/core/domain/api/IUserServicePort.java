@@ -6,4 +6,6 @@ public interface IUserServicePort {
 
     User createOwnerUser(User user);
 
+    User getUserByIdentity(int identityType, String identityNumber);
+
 }

@@ -21,4 +21,12 @@ public class UserClientAdapter implements IUserPersistencePort {
         ApiResponse<UserResponseDto> userResponseDto = userApiClient.createOwnerUser(userRequestDto);
         return IUserResponseMapper.INSTANCE.toUserModel(userResponseDto.getBody());
     }
+
+    @Override
+    public User getUserByIdentity(int identityType, String identityNumber) {
+        ApiResponse<UserResponseDto> userResponseDto = userApiClient.getUserByIdentity(identityType,identityNumber);
+        return IUserResponseMapper.INSTANCE.toUserModel(userResponseDto.getBody());
+    }
+
+
 }

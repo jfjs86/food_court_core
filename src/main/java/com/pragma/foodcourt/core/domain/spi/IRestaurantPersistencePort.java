@@ -7,7 +7,6 @@ public interface IRestaurantPersistencePort {
 
     Restaurant createRestaurant(Restaurant restaurant);
 
-    boolean validateUserAdministrator(User user);
-
+    User getUserByIdentity(int identityType, String identityNumber);
 
 }

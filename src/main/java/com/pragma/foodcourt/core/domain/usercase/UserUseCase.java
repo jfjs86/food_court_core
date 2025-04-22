@@ -37,6 +37,19 @@ public class UserUseCase implements IUserServicePort{
         return this.userPersistencePort.createOwnerUser(user);
     }
 
+    @Override
+    public User getUserByIdentity(int identityType, String identityNumber) {
+        if(identityType < 1){
+            throw new InvalidUserException(ErrorMessages.INVALID_USER_ID_TYPE);
+        }
+
+        if(identityNumber == null || identityNumber.trim().isEmpty()){
+            throw new InvalidUserException(ErrorMessages.INVALID_USER_ID_NUMBER);
+        }
+
+        return this.userPersistencePort.getUserByIdentity(identityType,identityNumber);
+    }
+
     private List<String> validateUser(User user) {
         List<String> errors = new ArrayList<>();
 

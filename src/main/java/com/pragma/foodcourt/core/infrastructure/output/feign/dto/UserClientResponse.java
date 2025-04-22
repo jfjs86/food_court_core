@@ -1,9 +1,11 @@
 package com.pragma.foodcourt.core.infrastructure.output.feign.dto;
 
+import com.pragma.foodcourt.core.application.dto.out.ProfiletResponseDto;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,4 +20,5 @@ public class UserClientResponse {
     private String userPhone;
     private LocalDate userBirthdate;
     private String userEmail;
+    private Set<ProfiletResponseDto> userProfiles;
 }

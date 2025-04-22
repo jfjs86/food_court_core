@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,5 +19,6 @@ public class UserResponseDto {
     private String userPhone;
     private LocalDate userBirthdate;
     private String userEmail;
+    private Set<ProfiletResponseDto> userProfiles;
 
 }

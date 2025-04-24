@@ -1,8 +1,5 @@
 package com.pragma.foodcourt.core.domain.usercase;
 
-import com.pragma.foodcourt.core.domain.exception.InvalidUserException;
-import com.pragma.foodcourt.core.domain.model.User;
-import com.pragma.foodcourt.core.domain.spi.IUserPersistencePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

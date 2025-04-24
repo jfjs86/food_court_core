@@ -4,7 +4,6 @@ import com.pragma.foodcourt.core.domain.enums.ProfileEnum;
 import com.pragma.foodcourt.core.domain.exception.ErrorMessages;
 import com.pragma.foodcourt.core.domain.exception.InvalidRestaurantException;
 import com.pragma.foodcourt.core.domain.model.Restaurant;
-import com.pragma.foodcourt.core.domain.model.User;
 import com.pragma.foodcourt.core.domain.spi.IRestaurantPersistencePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

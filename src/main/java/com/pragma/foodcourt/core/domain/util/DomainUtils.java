@@ -1,5 +1,6 @@
 package com.pragma.foodcourt.core.domain.util;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.regex.Matcher;
@@ -46,5 +47,12 @@ public class DomainUtils {
 
     public static boolean isNullOrEmpty(String str) {
         return str == null || str.trim().isEmpty();
+    }
+
+    public static boolean isIntegerPositive(BigDecimal numero) {
+        if (numero.compareTo(BigDecimal.ZERO) <= 0) {
+            return false;
+        }
+        return numero.scale() <= 0 || numero.stripTrailingZeros().scale() <= 0;
     }
 }

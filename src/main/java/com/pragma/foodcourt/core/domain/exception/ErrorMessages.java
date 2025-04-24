@@ -17,6 +17,10 @@ public class ErrorMessages {
     public static final String INVALID_USER_ADMINISTRATOR = "User must be a Administrator";
     public static final String INVALID_RESTAURANT_IDENTITY = "Restaurant identity must be number";
     public static final String INVALID_RESTAURANT_NAME = "Restaurant name must have at least one letter";
+    public static final String INVALID_DISH_DATA = "Invalid dish data: ";
+    public static final String DISH_DATA_NULL = "Dish data cannot be null";
+    public static final String INVALID_DISH_PRICE = "Dish price must be integer positive";
+    public static final String INVALID_DISH_RESTAURANT = "Dish must be associated with a restaurant";
 
 
 }

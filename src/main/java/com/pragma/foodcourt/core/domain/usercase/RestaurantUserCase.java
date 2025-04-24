@@ -40,8 +40,6 @@ public class RestaurantUserCase implements IRestaurantServicePort {
             return errors;
         }
 
-
-
         if(!DomainUtils.isNumber(restaurant.getRestaurantIdentity())){
             errors.add(ErrorMessages.INVALID_RESTAURANT_IDENTITY);
         }

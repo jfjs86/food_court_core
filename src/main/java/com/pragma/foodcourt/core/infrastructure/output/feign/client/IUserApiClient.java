@@ -14,7 +14,7 @@ public interface IUserApiClient {
     @PostMapping("/api/user/create-user")
     ApiResponse<UserResponseDto> createOwnerUser(UserRequestDto userRequestDto);
 
-    @GetMapping("/api/user/get-user-by-type-number-identity")
-    ApiResponse<UserResponseDto> getUserByIdentity(@RequestParam int identityType, @RequestParam String identityNumber);
+    @GetMapping("/api/user/get-user-by-identity")
+    ApiResponse<UserResponseDto> getUserByIdentity(@RequestParam int userIdentityType, @RequestParam String userIdentityNumber);
 
 }
